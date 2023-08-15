@@ -1,0 +1,38 @@
+<%- include('includes/head') %>
+    <link rel="stylesheet" href="/styles/all-post.css">
+    
+</head>
+<body>
+    <%- include('includes/header') %>
+    <main id="main">
+        <h1>All Posts</h1>
+        <section>
+            <ul id="post-list">
+                <% if (!posts || posts?.length === 0) { %>
+                    <h2>posts not found!</h2>
+                    <p>Click "Create Post" above, to add a new post!</p>
+                <% } else { %>
+                    <% for (const post of posts) { %>
+                        <li>
+                            <article class="post-article">
+                                <h2><%= post.title %></h2>
+                                <address><%= post.author_name %></address>
+                                <summary><%= post.summary %></summary>
+                                <div id="post-btn">
+                                    <form action="/post/delete" method="POST">
+                                        <input type="hidden" name="id" value="<%= post.id %>">
+                                        <button>Delete Post</button>
+                                    </form> 
+                                    <a href="/posts/<%= post.id %>/edit">Edit Post</a>
+                                    <a href="/posts/<%= post.id %>">View Full Post</a>
+                                </div>
+                            </article>
+                        </li>
+                    <% } %>
+                <% } %>
+            </ul>
+        </section>
+    </main>
+    
+</body>
+</html>

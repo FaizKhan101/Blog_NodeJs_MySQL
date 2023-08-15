@@ -1,0 +1,25 @@
+<%- include('../includes/head') %>
+    <link rel="stylesheet" href="/styles/create-post.css">
+
+</head>
+<body>
+    <%- include('../includes/header') %>
+    <main>
+        <form id="create-post" action="/authors/<%= author.id %>/edit" method="POST">
+            <h2>Update a Author</h2>
+            <div>
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" value="<%= author.name %>" required>
+
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" value="<%= author.email %>" required>
+            </div>
+            
+            <div id="btn-area">
+                <a href="/authors" class="btn">Cancel</a>
+                <button type="submit" class="btn">Update Author</button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

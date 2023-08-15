@@ -1,0 +1,17 @@
+<%- include('includes/head') %>
+    <link rel="stylesheet" href="/styles/details.css">
+
+</head>
+<body>
+    <%- include('includes/header') %>
+    <main id="main-detail">
+        <h2>POST DETAILS</h2>
+        <h1><%= post.title %></h1>
+        <address>By <%= post.author_name %> | <%= post.date %></address>
+        <summary><%= post.summary %></summary>
+        <hr>
+        <h3><%= post.title %></h3>
+        <p><%= post.body %></p>
+    </main>
+</body>
+</html>

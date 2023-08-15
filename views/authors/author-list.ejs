@@ -1,0 +1,36 @@
+<%- include('../includes/head') %>
+    <link rel="stylesheet" href="/styles/all-post.css">
+    
+</head>
+<body>
+    <%- include('../includes/header') %>
+    <main id="main">
+        <h1>All Authors</h1>
+        <section>
+            <ul id="post-list">
+                <% if (!authors || authors?.length === 0) { %>
+                    <h2>authors not found!</h2>
+                <% } else { %>
+                    <% for (const author of authors) { %>
+                        <li>
+                            <article class="post-article">
+                                <h2><%= author.name %></h2> 
+                                <address><%= author.email %></address> <br> <br>
+                                <div id="post-btn">
+                                    <form action="/authors/delete" method="POST">
+                                        <input type="hidden" name="id" value="<%= author.id %>">
+                                        <button>Delete Author</button>
+                                    </form> 
+                                    <a href="/authors/<%= author.id %>/edit">Edit Author</a>
+                                    <a href="/authors/<%= author.id %>">View Full Author</a>
+                                </div>
+                            </article>
+                        </li>
+                    <% } %>
+                <% } %>
+            </ul>
+        </section>
+    </main>
+    
+</body>
+</html>
